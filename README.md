@@ -1,52 +1,75 @@
-# Weather-Prediction
+Weather Prediction Analysis and Modeling
 
-Weather Prediction Project
+This project demonstrates an end-to-end pipeline for weather data preprocessing, feature engineering, and prediction modeling using Python and machine learning libraries. The model predicts the probability of sunny weather based on historical weather data.
 
-This project is a Python script that analyzes weather data and predicts sunny days using a machine learning model.
+Table of Contents
 
-What This Script Does
-
-Cleans and processes weather data.
-Handles missing values and fixes data errors.
-Creates new features to improve predictions.
-Uses a Random Forest Classifier to predict sunny days.
-Visualizes results and evaluates how well the model works.
+Overview
 Requirements
+Dataset
+Pipeline Description
+Modeling and Evaluation
+How to Run
+Results
+License
+Overview
 
-You need the following Python libraries installed:
+The script performs the following tasks:
 
-pandas
-numpy
-scikit-learn
-matplotlib
-Install them by running:
+Cleans and preprocesses weather data.
+Handles missing values and outliers.
+Creates new features for better prediction accuracy.
+Trains a Random Forest Classifier to predict sunny weather.
+Evaluates and visualizes the model's performance using accuracy and feature importance.
+Dataset
 
-pip install pandas numpy scikit-learn matplotlib
-Input Data
+The script uses a CSV file (data.csv) containing weather data with the following columns:
 
-The script uses a file called data.csv with the following columns:
-
-precipitation: Amount of rain or snow.
+precipitation: Precipitation levels.
 temp_max: Maximum temperature.
 temp_min: Minimum temperature.
 wind: Wind speed.
-weather: Weather description (e.g., sunny, cloudy).
-Make sure data.csv is in the same folder as the script.
+weather: Weather description (e.g., sunny, cloudy, etc.).
+Ensure the dataset is placed in the same directory as the script.
 
-How It Works
+Pipeline Description
 
-Cleans the Data:
-Fills in missing values.
-Fixes any invalid temperature data.
-Removes duplicates.
-Creates New Features:
-Adds temp_range (difference between max and min temperature).
-Creates is_sunny, a column that marks if the weather is sunny.
-Trains the Model:
+Data Cleaning:
+Handles missing values in numerical columns using a rolling median and column median as fallback.
+Removes duplicates and fixes invalid temperature values where temp_max < temp_min.
+Feature Engineering:
+Creates a new feature: temp_range (difference between temp_max and temp_min).
+Converts the weather column to a binary target variable is_sunny.
+Outlier Handling:
+Uses the Interquartile Range (IQR) method to cap values in numerical columns.
+Model Training:
 Splits data into training and testing sets.
-Scales the data for better model performance.
-Trains a Random Forest Classifier to predict sunny weather.
-Evaluates the Model:
-Checks accuracy, precision, and recall.
-Shows important features for predictions.
-Visualizes results with charts.
+Scales features using StandardScaler.
+Trains a Random Forest Classifier on the scaled features.
+Prediction and Evaluation:
+Predicts sunny weather probabilities for the entire dataset.
+Visualizes results using rolling accuracy plots and prediction error distribution.
+Modeling and Evaluation
+
+Feature Correlation: Displays correlation between input features and the target variable.
+Feature Importance: Lists the importance of each feature in predicting sunny weather.
+Performance Metrics:
+Accuracy
+Precision
+Recall
+Visualization:
+Rolling accuracy (e.g., 30-day window).
+Prediction error distribution.
+Results
+
+The script provides:
+
+Performance Metrics:
+Accuracy, Precision, and Recall values for the model.
+Visualizations:
+Rolling accuracy plot to monitor performance over time.
+Histogram of prediction errors.
+Feature Insights:
+Feature correlations and importance rankings.
+Prediction Summary:
+Breakdown of correct and incorrect predictions.
